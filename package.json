@@ -1,0 +1,25 @@
+{
+  "name": "fmongo",
+  "version": "1.0.0",
+  "description": "Mongo db ap from mongodb university",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "watch": "nodemon --config nodemon.json index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.5.1",
+    "koa-bodyparser": "^4.2.1",
+    "koa-json": "^2.0.2",
+    "koa-router": "^7.4.0",
+    "koa-views": "^6.1.4",
+    "mongodb": "^3.1.0-beta4",
+    "pug": "^2.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  }
+}

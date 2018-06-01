@@ -1,0 +1,50 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+    image: mongo-course
+    command: npm run watch
+    environment:
+      MONGO_HOST: mongodb
+      MONGO_USER: root
+      MONGO_PASS: 111111
+    ports:
+      - 3000:80
+    depends_on:
+      - mongodb
+    networks:
+      - mongoapp
+    volumes:
+      - .:/opt/app
+      - app_empty:/opt/app/node_modules
+
+  mongodb:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 111111
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb:/data/db
+    networks:
+      - mongoapp
+
+  mongo-shell:
+    image: mongo
+    command: mongo admin --host mongodb --username root --password 111111
+    depends_on:
+      - mongodb
+    networks:
+      - mongoapp
+
+volumes:
+  app_empty:
+  mongodb:
+
+networks:
+  mongoapp:
+
